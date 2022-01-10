@@ -1,7 +1,7 @@
 # cf-terraforming-docker
 A docker Image to run CF-Terraforming for importing of state for Cloudflare
 
-**Image on DockeHub:**
+**Image on DockerHub:**
 
 https://hub.docker.com/repository/docker/rolandok/cf_terraforming
 
