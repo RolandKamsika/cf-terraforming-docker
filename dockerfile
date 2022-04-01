@@ -17,7 +17,7 @@ RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/* \
 
 COPY --from=build /cf-terraforming/cf-terraforming /usr/local/bin/cf-terraforming
 
-ENV TERRAFORM_VERSION 1.1.2
+ENV TERRAFORM_VERSION 1.1.7
 
 RUN apk --update --no-cache add libc6-compat git openssh-client python3 py-pip && pip install awscli \
 	&& apk --no-cache add curl \
