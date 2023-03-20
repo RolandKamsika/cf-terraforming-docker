@@ -1,6 +1,6 @@
 ARG VERSION=master
 
-FROM golang:1.19.0-alpine AS build
+FROM golang:1.20.2-alpine AS build
 
 ENV GO111MODULE=on
 
@@ -10,14 +10,14 @@ RUN apk add git \
     && git checkout $VERSION \
     && go build -o cf-terraforming cmd/cf-terraforming/main.go
 
-FROM alpine:3.16
+FROM alpine:3.17
 
 RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/* \ 
 && update-ca-certificates
 
 COPY --from=build /cf-terraforming/cf-terraforming /usr/local/bin/cf-terraforming
 
-ENV TERRAFORM_VERSION 1.2.8
+ENV TERRAFORM_VERSION 1.4.2
 
 RUN apk --update --no-cache add libc6-compat git openssh-client python3 py-pip && pip install awscli \
 	&& apk --no-cache add curl \
